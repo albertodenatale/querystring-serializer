@@ -1,0 +1,14 @@
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\FluentAssertions.Core.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\FluentAssertions.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\QuerystringSerializer.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\QuerystringSerializer.pdb
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\FluentAssertions.pdb
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\FluentAssertions.xml
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\FluentAssertions.Core.pdb
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\UnitTestProject1\bin\Debug\FluentAssertions.Core.xml

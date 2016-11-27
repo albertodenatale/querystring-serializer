@@ -1,0 +1,5 @@
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\QuerystringSerializer\obj\Debug\QuerystringSerializer.csprojResolveAssemblyReference.cache
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\QuerystringSerializer\bin\Debug\QuerystringSerializer.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\QuerystringSerializer\bin\Debug\QuerystringSerializer.pdb
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\QuerystringSerializer\obj\Debug\QuerystringSerializer.dll
+C:\Users\alberto.denatale\Documents\Visual Studio 2015\Projects\QuerystringSerializer\QuerystringSerializer\obj\Debug\QuerystringSerializer.pdb
