@@ -87,5 +87,33 @@ namespace UnitTestProject1
             result.Should().NotBeEmpty();
             result.Count().Should().Be(2);
         }
+
+        [TestMethod]
+        public void Should_Enumerate_Anonymous()
+        {
+            var propertyValue = new
+            {
+                Name = "Alberto",
+                DateOfBirth = new DateTime(1986, 12, 5),
+                Dogs = new []
+                        {
+                            new { Name = "Alberto" }
+                        },
+                Partner = new
+                {
+                    Name = "A Name"
+                }
+            };
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(4);
+        }
     }
 }
