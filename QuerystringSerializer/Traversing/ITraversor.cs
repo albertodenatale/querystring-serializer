@@ -5,6 +5,8 @@ namespace QuerystringSerializer.Traversing
 {
     public interface ITraversor
     {
+        Tree Tree { get; set; }
+
         IEnumerable<Node> GetPairs();
     }
 }

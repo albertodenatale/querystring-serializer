@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace QuerystringSerializer.Traversing
 {
     public class PreorderTraversor : ITraversor
     {
-        Node _root;
-
-        public PreorderTraversor(Node root)
-        {
-            _root = root;
-        }
+        public Tree Tree { get; set; }
 
         public IEnumerable<Node> GetPairs()
         {
-            return GetPairsInternal(_root);
+            if(Tree == null)
+            {
+                throw new InvalidOperationException("The traversor should be initialised with a tree");
+            }
+
+            return GetPairsInternal(Tree.Root);
         }
 
         private IEnumerable<Node> GetPairsInternal(Node node)

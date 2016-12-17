@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using QuerystringSerializer.Validation;
 
@@ -24,7 +26,8 @@ namespace QuerystringSerializer.Traversing
         private bool IsPrimitive()
         {
             return _value.GetType().IsPrimitive
-                || _value is string;
+                || _value is string
+                || _value is DateTime;
         }
 
         public bool HasChildren()
@@ -48,10 +51,27 @@ namespace QuerystringSerializer.Traversing
         {
             ThrowIf.IsInvalidState(_value, "_value cannot be null");
 
-            foreach (var prop in _value.GetType().GetProperties())
+            if (IsEnumerable())
             {
-                yield return new Node(prop.Name, prop.GetValue(_value, null));
+                IEnumerable<object> e = _value as IEnumerable<object>;
+
+                foreach(var n in e.Select(x => new Node("", x)))
+                {
+                    yield return n;
+                }
             }
+            else
+            {
+                foreach (var prop in _value.GetType().GetProperties())
+                {
+                    yield return new Node(prop.Name, prop.GetValue(_value, null));
+                }
+            }
+        }
+
+        private bool IsEnumerable()
+        {
+            return typeof(IEnumerable).IsAssignableFrom(_value.GetType());
         }
     }
 }
