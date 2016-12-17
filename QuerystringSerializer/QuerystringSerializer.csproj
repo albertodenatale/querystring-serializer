@@ -43,7 +43,7 @@
     <Compile Include="Traversing\ITraversor.cs" />
     <Compile Include="Traversing\Node.cs" />
     <Compile Include="Traversing\PreorderTraversor.cs" />
-    <Compile Include="Pairing\IPairConverter.cs" />
+    <Compile Include="Pairing\IPairer.cs" />
     <Compile Include="Pairing\StandardPairer.cs" />
     <Compile Include="Encoding\IEncoder.cs" />
     <Compile Include="Encoding\PercentEncoder.cs" />

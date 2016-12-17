@@ -19,7 +19,7 @@ namespace QuerystringSerializer.Traversing
 
         private IEnumerable<Node> GetPairsInternal(Node node)
         {
-            if(node.HasValue())
+            if(node.IsLeaf())
             {
                 yield return node;
             }

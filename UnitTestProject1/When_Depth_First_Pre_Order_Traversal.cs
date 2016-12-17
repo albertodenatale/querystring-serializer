@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using System.Linq;
+using QuerystringSerializer;
 
 namespace UnitTestProject1
 {
@@ -18,7 +19,7 @@ namespace UnitTestProject1
         {
             Traversor = new PreorderTraversor();
         }
-        
+
         [TestMethod]
         public void Should_Enumerate_Children()
         {
@@ -47,5 +48,44 @@ namespace UnitTestProject1
             result.Count().Should().Be(5);
         }
 
+        [TestMethod]
+        public void Should_Enumerate_Arrays()
+        {
+            var propertyValue = new List<Dog>
+                       {
+                           new Dog { Name = "Pluto" },
+                           new Dog { Name = "Fuffy" }
+                       };
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(2);
+        }
+
+        [TestMethod]
+        public void Should_Enumerate_String_Dictionaries()
+        {
+            var propertyValue = new Dictionary<string, string>
+            {
+                { "First","Pluto" },
+                { "Second","Fuffy" }
+            };
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(2);
+        }
     }
 }

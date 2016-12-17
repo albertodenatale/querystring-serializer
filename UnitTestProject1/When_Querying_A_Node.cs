@@ -19,7 +19,7 @@ namespace UnitTestProject1
 
             var node = new Node(propertyName, propertyValue);
 
-            var result = node.HasValue();
+            var result = node.IsLeaf();
 
             result.Should().Be(true);
         }
@@ -32,7 +32,7 @@ namespace UnitTestProject1
 
             var node = new Node(propertyName, propertyValue);
 
-            var result = node.HasValue();
+            var result = node.IsLeaf();
 
             result.Should().Be(true);
         }
@@ -45,7 +45,7 @@ namespace UnitTestProject1
 
             var node = new Node(propertyName, propertyValue);
 
-            var result = node.HasValue();
+            var result = node.IsLeaf();
 
             result.Should().Be(false);
         }
@@ -139,7 +139,7 @@ namespace UnitTestProject1
             Action action = () => node.Children().ToList();
 
             node.HasChildren().Should().BeFalse();
-            node.HasValue().Should().BeFalse();
+            node.IsLeaf().Should().BeFalse();
             action.ShouldThrow<InvalidOperationException>();
         }
     }

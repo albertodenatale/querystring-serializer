@@ -11,13 +11,29 @@ namespace QuerystringSerializer.Traversing
         private object _value;
         private string _name;
 
+        public object Value
+        {
+            get
+            {
+                return _value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
+
         public Node(string name, object value)
         {
             _name = name;
             _value = value;
         }
 
-        public bool HasValue()
+        public bool IsLeaf()
         {
             return _value != null ? IsPrimitive() : false;
         }
@@ -32,7 +48,7 @@ namespace QuerystringSerializer.Traversing
 
         public bool HasChildren()
         {
-            return !HasValue() ? HasChildrenInternal() : false;
+            return !IsLeaf() ? HasChildrenInternal() : false;
         }
 
         private bool HasChildrenInternal()
@@ -51,11 +67,20 @@ namespace QuerystringSerializer.Traversing
         {
             ThrowIf.IsInvalidState(_value, "_value cannot be null");
 
-            if (IsEnumerable())
+            if (IsDictionary())
+            {
+                Dictionary<string, string> d = _value as Dictionary<string, string>;
+
+                foreach (KeyValuePair<string, string> kv in d)
+                {
+                    yield return new Node(kv.Key, kv.Value);
+                }
+            }
+            else if (IsEnumerable())
             {
                 IEnumerable<object> e = _value as IEnumerable<object>;
 
-                foreach(var n in e.Select(x => new Node("", x)))
+                foreach (var n in e.Select(x => new Node(string.Empty, x)))
                 {
                     yield return n;
                 }
@@ -67,6 +92,11 @@ namespace QuerystringSerializer.Traversing
                     yield return new Node(prop.Name, prop.GetValue(_value, null));
                 }
             }
+        }
+
+        private bool IsDictionary()
+        {
+            return typeof(IDictionary).IsAssignableFrom(_value.GetType());
         }
 
         private bool IsEnumerable()
