@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using QuerystringSerializer.Validation;
 
 namespace QuerystringSerializer.Traversing
@@ -51,10 +52,36 @@ namespace QuerystringSerializer.Traversing
                 || _value is short?
                 || _value is ushort
                 || _value is ushort?
+                || _value is byte
+                || _value is byte?
+                || _value is int
+                || _value is int?
+                || _value is uint
+                || _value is uint?
+                || _value is long
+                || _value is long?
+                || _value is ulong
+                || _value is ulong?
+                || _value is float
+                || _value is float?
+                || _value is double
+                || _value is double?
                 || _value is string
                 || _value is DateTime
-                // TODO temporary here, but list to be made explicit
-                || _value.GetType().IsPrimitive;
+                || _value is DateTime?
+                || _value is DateTimeOffset
+                || _value is DateTimeOffset?
+                || _value is decimal
+                || _value is decimal?
+                || _value is Guid
+                || _value is Guid?
+                || _value is TimeSpan
+                || _value is TimeSpan?
+                || _value is BigInteger
+                || _value is BigInteger?
+                || _value is Uri
+                || _value is byte[]
+                || _value is DBNull;
         }
 
         public bool HasChildren()

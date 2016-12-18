@@ -25,11 +25,11 @@ namespace UnitTestProject1
         {
             var propertyValue = new Person
             {
-                Name = "Alberto",
+                Name = "APerson",
                 DateOfBirth = new DateTime(1986, 12, 5),
                 Dogs = new List<Dog>
                             {
-                                new Dog { Name = "Alberto" }
+                                new Dog { Name = "Fuffy" }
                             },
                 Partner = new Person
                 {
@@ -45,7 +45,7 @@ namespace UnitTestProject1
             var result = Traversor.GetPairs().ToList();
 
             result.Should().NotBeEmpty();
-            result.Count().Should().Be(5);
+            result.Count().Should().Be(7);
         }
 
         [TestMethod]
@@ -112,11 +112,11 @@ namespace UnitTestProject1
         {
             var propertyValue = new
             {
-                Name = "Alberto",
+                Name = "APerson",
                 DateOfBirth = new DateTime(1986, 12, 5),
                 Dogs = new []
                         {
-                            new { Name = "Alberto" }
+                            new { Name = "Fuffy" }
                         },
                 Partner = new
                 {
@@ -325,6 +325,252 @@ namespace UnitTestProject1
             result.Count().Should().Be(1);
 
             var number = result.First().Value as ushort?;
+
+            number.HasValue.Should().Be(false);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Bytes()
+        {
+            byte propertyValue = 255;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as byte?;
+
+            number.HasValue.Should().Be(true);
+            number.Value.Should().Be(255);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Nullable_Bytes()
+        {
+            byte? propertyValue = null;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as byte?;
+
+            number.HasValue.Should().Be(false);
+        }
+
+        [TestMethod]
+        public void Should_Handle_UInt()
+        {
+            uint propertyValue = 4294967295U;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as uint?;
+
+            number.HasValue.Should().Be(true);
+            number.Value.Should().Be(4294967295U);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Nullable_UInt()
+        {
+            uint? propertyValue = null;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as uint?;
+
+            number.HasValue.Should().Be(false);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Longs()
+        {
+            long propertyValue = 9223372036854775807L;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as long?;
+
+            number.HasValue.Should().Be(true);
+            number.Value.Should().Be(9223372036854775807L);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Nullable_Longs()
+        {
+            long? propertyValue = null;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as long?;
+
+            number.HasValue.Should().Be(false);
+        }
+
+        [TestMethod]
+        public void Should_Handle_ULongs()
+        {
+            ulong propertyValue = 18446744073709551615UL;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as ulong?;
+
+            number.HasValue.Should().Be(true);
+            number.Value.Should().Be(18446744073709551615UL);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Nullable_ULongs()
+        {
+            ulong? propertyValue = null;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as ulong?;
+
+            number.HasValue.Should().Be(false);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Floats()
+        {
+            float propertyValue = 3.5f;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as float?;
+
+            number.HasValue.Should().Be(true);
+            number.Value.Should().Be(3.5f);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Nullable_Floats()
+        {
+            float? propertyValue = null;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as float?;
+
+            number.HasValue.Should().Be(false);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Doubles()
+        {
+            double propertyValue = 100.5D;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as double?;
+
+            number.HasValue.Should().Be(true);
+            number.Value.Should().Be(100.5D);
+        }
+
+        [TestMethod]
+        public void Should_Handle_Nullable_Doubles()
+        {
+            float? propertyValue = null;
+
+            Traversor.Tree = new Tree
+            {
+                Root = new Node("ROOT", propertyValue)
+            };
+
+            var result = Traversor.GetPairs().ToList();
+
+            result.Should().NotBeEmpty();
+            result.Count().Should().Be(1);
+
+            var number = result.First().Value as float?;
 
             number.HasValue.Should().Be(false);
         }
