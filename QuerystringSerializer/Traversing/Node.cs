@@ -35,25 +35,37 @@ namespace QuerystringSerializer.Traversing
 
         public bool IsLeaf()
         {
-            return _value != null ? IsPrimitive() : false;
+            return IsQuerystringPrimitive();
         }
-
-
-        private bool IsPrimitive()
+        
+        private bool IsQuerystringPrimitive()
         {
-            return _value.GetType().IsPrimitive
+            return _value == null
+                || _value is char
+                || _value is char?
+                || _value is bool
+                || _value is bool?
+                || _value is sbyte
+                || _value is sbyte?
+                || _value is short
+                || _value is short?
+                || _value is ushort
+                || _value is ushort?
                 || _value is string
-                || _value is DateTime;
+                || _value is DateTime
+                // TODO temporary here, but list to be made explicit
+                || _value.GetType().IsPrimitive;
         }
 
         public bool HasChildren()
         {
-            return !IsLeaf() ? HasChildrenInternal() : false;
+            return HasChildrenInternal();
         }
 
         private bool HasChildrenInternal()
         {
-            return _value!= null && 
+            return !IsLeaf() && 
+                   // TODO found on stackoverflow, to be improved
                    _value.GetType()
                          .GetProperties()
                          .Select(p => p.GetValue(_value, null))
@@ -69,11 +81,16 @@ namespace QuerystringSerializer.Traversing
 
             if (IsDictionary())
             {
-                Dictionary<string, string> d = _value as Dictionary<string, string>;
+                IDictionary<string, object> d = _value as IDictionary<string, object>;
 
-                foreach (KeyValuePair<string, string> kv in d)
+                if(d == null)
                 {
-                    yield return new Node(kv.Key, kv.Value);
+                    throw new ArgumentException("Only string keys can be contained");
+                }
+
+                foreach (KeyValuePair<string, object> kv in d)
+                {
+                    yield return new Node(kv.Key as string, kv.Value);
                 }
             }
             else if (IsEnumerable())

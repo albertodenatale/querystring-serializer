@@ -27,9 +27,9 @@ namespace QuerystringSerializer.Traversing
             {
                 foreach (var child in node.Children())
                 {
-                    foreach (var nephew in GetPairsInternal(child))
+                    foreach (var descendant in GetPairsInternal(child))
                     {
-                        yield return nephew;
+                        yield return descendant;
                     }
                 }
             }
